@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js' ;
+import {products} from '../data/products.js';
 /* create a module
 1. create a file
 2. dont load the file with <script>
