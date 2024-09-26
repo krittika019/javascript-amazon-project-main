@@ -5,7 +5,7 @@ import {products} from '../data/products.js';
 
 cartModule.cart
 cartModule.addToCart('id');
-*/
+*/ 
 /* create a module
 1. create a file
 2. dont load the file with <script>
