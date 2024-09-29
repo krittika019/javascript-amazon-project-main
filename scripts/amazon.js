@@ -76,7 +76,7 @@ products.forEach((product)=> {
             </div>
 
             <div class="product-price">
-                $${formatCurrency(matchingProduct.priceCents)}
+                $${formatCurrency(product.priceCents)}
             </div>
 
             <div class="product-quantity-container ">
@@ -108,7 +108,8 @@ products.forEach((product)=> {
             </div>
         `;
 });
-
+document.querySelector('.js-products-grid').innerHTML = productsHTML ;
+const addedMessageTimeouts = {} ;
 
 function addedToCartDisplay(productId){
     document.querySelector(`.js-added-cart-${productId}`).classList.add('js-added-to-cart') ;
@@ -136,16 +137,11 @@ function updateCartQuantity(){
     
 }
 
-document.querySelector('.js-products-grid').innerHTML = productsHTML ;
-const addedMessageTimeouts = {} ;
-
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
-        const productId = button.dataset.productId ;
-
+        const productId = button.dataset.productId 
         addToCart(productId) ;
         addedToCartDisplay(productId) ;
         updateCartQuantity() ;
-        
     });
 });
