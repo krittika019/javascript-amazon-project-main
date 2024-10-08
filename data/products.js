@@ -1,3 +1,5 @@
+//built-in-class = generates an object that represents the current date
+// this - lets an object access its own properties
 import { formatCurrency } from "../scripts/utils/money.js";
 
 export function getProduct(productId){
@@ -34,25 +36,30 @@ class Product {
     return `$${formatCurrency(this.priceCents)}` ;
   }
 
+  extraInfoHTML() {
+    return '' ;
+  }
+
 }
 
-/*const product1 = new Product({
-  id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-  image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-  name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-  rating: {
-    stars: 4.5,
-    count: 87
-  },
-  priceCents: 1090,
-  keywords: [
-    "socks",
-    "sports",
-    "apparel"
-  ]
-}) ;
-console.log(product1) ;*/
+class Clothing extends Product{
+  sizeChartLink;
+  constructor(productDetails) {
+    super(productDetails) ; // call the constructor of parent class
+    this.sizeChartLink = productDetails.sizeChartLink ;
+  }
+  // method override
+  extraInfoHTML() {
+    return `
+    <a href="${this.sizeChartLink}" target="_blank">Size chart</a>`;
+  }
+}
+/*
+const date = new Date() ;
+console.log(date) ;
 
+console.log(date.toLocaleTimeString()) ; // goves current time
+*/
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -713,6 +720,9 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
+  if(productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails) ;
 });
 

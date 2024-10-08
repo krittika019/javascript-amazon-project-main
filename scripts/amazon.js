@@ -52,6 +52,15 @@ get a variable out of a file
     },
     priceCents : 1899 
 }];
+
+polymorphism = use a method without knowing the class
+
+${
+    product instanceof Clothing
+    ? `<a href="${product.sizeCharLink}">Size Chart</a>`
+    : ''
+
+}
 */
 let productsHTML = '' ;
 
@@ -93,6 +102,8 @@ products.forEach((product)=> {
                 <option value="10">10</option>
                 </select>
             </div>
+
+            ${product.extraInfoHTML()}
 
             <div class="product-spacer"></div>
 

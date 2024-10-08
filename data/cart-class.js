@@ -95,7 +95,7 @@ class Cart {
         this.saveToStorage() ;
     }
 
-};
+}
 
 
 const cart = new Cart('cart-oop'); // new keyword - creates a new object of the class 
