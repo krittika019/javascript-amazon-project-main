@@ -59,7 +59,22 @@ const date = new Date() ;
 console.log(date) ;
 
 console.log(date.toLocaleTimeString()) ; // goves current time
+
+function logThis() {
+  console.log(this) ;
+}
+logThis.call('hello') ;
+// arrow functions do not change the value of "this" 
+// since function () {} makes the value of "this" as undefined
+//but we can change it using functionname.call('value of this') ;
+this
+const obj3 = {
+  method: () => {
+    console.log(this) ; // "this" - keeps the value that it had outside the arrow function
+  }
+};
 */
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -725,5 +740,3 @@ export const products = [
   }
   return new Product(productDetails) ;
 });
-
-console.log(products) ;
