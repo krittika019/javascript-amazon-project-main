@@ -1,17 +1,17 @@
 //external libraries = code that is outside of our project
 //use PascalCase for things that generate objects = start every word with a capital
-
+// field == property
 
 class Cart {
     cartItems ;
-    localStorageKey ;
+    #localStorageKey ;
 
     constructor(localStorageKey) {
-        this.localStorageKey = localStorageKey ;
-        this.loadFromStorage() ;
+        this.#localStorageKey = localStorageKey ;
+        this.#loadFromStorage() ;
     }
-    loadFromStorage(){
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) ;
+    #loadFromStorage(){
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)) ;
         if(!this.cartItems) {
             this.cartItems = [{
                 productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -26,7 +26,7 @@ class Cart {
         }
     }
     saveToStorage(){
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems)) ;
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems)) ;
     }
     addToCart(productId){
         let matchingItem ;
@@ -104,7 +104,7 @@ const businesscart = new Cart('cart-business') ; //instance of the class
 
 console.log(cart) ;
 console.log(businesscart) ;
-console.log(businesscart instanceof Cart);
+//console.log(businesscart instanceof Cart);
 
 
 
