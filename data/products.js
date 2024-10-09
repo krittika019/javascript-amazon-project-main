@@ -79,13 +79,40 @@ const obj3 = {
   }
 };
 */
-// fun - callback - a function to run in the future
+// fun -is a  callback - a function to run in the future
+// fetch - better way to make http requests
+//XMLHttpRequest - to make request to the backend that uses callback 
+//fetch() - to make request to the backend that uses a promise
+// response.json() is asynchronous it returns a promise
+export function loadProductsFetch() {//built in function (fetch) makes http request
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+  ).then((response) => {
+    return response.json() ;
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if(productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails) ;
+    }) ;
+    console.log('load products') ;
+    
+  });
+
+  return promise ;
+}
+/*
+loadProductsFetch().then(() => {
+  console.log('next step') ;
+}) ;
+*/
 export let products = [] ;
 
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest() ;
   xhr.addEventListener('load',()=> {
-        
+
     products = JSON.parse(xhr.response).map((productDetails) => {
       if(productDetails.type === 'clothing') {
         return new Clothing(productDetails);
