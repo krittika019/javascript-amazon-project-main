@@ -1,5 +1,8 @@
 //built-in-class = generates an object that represents the current date
 // this - lets an object access its own properties
+// promises - better way to handle asynchronous code - let us wait for
+//some code to finish, before going to the next step
+
 import { formatCurrency } from "../scripts/utils/money.js";
 
 export function getProduct(productId){
@@ -82,8 +85,7 @@ export let products = [] ;
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest() ;
   xhr.addEventListener('load',()=> {
-    console.log(JSON.parse(xhr.response));
-    
+        
     products = JSON.parse(xhr.response).map((productDetails) => {
       if(productDetails.type === 'clothing') {
         return new Clothing(productDetails);
