@@ -11,7 +11,30 @@ import { loadCart } from "../data/cart.js";
 // why promise because multiple callbacks cause a lot of nesting
 // can run multiple promises at the same time by Promise.all() - wait for all of them to finish
 // promises are a better way to wait for a asynchronous code to finish
+// Async Await = even better way to handle asynchronous code
+//shorcut for promises and removes all the extra code
+// async = makes a function that return a promise
+// await - lets us wait for the promise to finish ebfore gng to the next line
+// we can only use await, when we are inside an async function
+async function loadPage() {
+    console.log('load page') ;
+    await loadProductsFetch();
+    const value = await new Promise((resolve) => {
+        loadCart(() => {
+            resolve('value1') ;
+        });
+    });
+    
+    renderorderSummary() ;
+    renderPaymentSummary() ;
+    //return 'value1' ; converted to resolve value1
+}
 
+loadPage() ;
+
+
+
+/*
 Promise.all([
     loadProductsFetch(),
     new Promise((resolve) => {
@@ -24,7 +47,7 @@ Promise.all([
     renderorderSummary() ;
     renderPaymentSummary() ;
 });
-
+*/
 /*
 new Promise((resolve) => {
     loadProducts(() => {
