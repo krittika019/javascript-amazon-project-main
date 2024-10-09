@@ -7,14 +7,14 @@ xhr.addEventListener('load', ()=> {
 }) ; // listens/wait for en event and then run the function
 //load means the response has loaded 
 xhr.open('GET', 'https://supersimplebackend.dev/products/first') ; // parameter - type of HTTP msg sent, and where to send this http msg
-xhr.send() ;// known as asynchronouse code - doesnt wait for this line of code to finish, sends the request and immediately go to next line
+xhr.send() ;// known as asynchronouse code - doesnt wait for response line of code to finish, sends the request and immediately go to next line
 
 // xhr.response sight problem - when we send a request to the backend, it takes time for the request to travel across the internet
 /*Types of request
     GET : get some info from the backend
-    POST
-    PUT
-    DELETE
+    POST : 
+    PUT : 
+    DELETE : 
 URL = uniform resource locator
 -like an address, but for the internet
 -helps us locate another computer on the internet

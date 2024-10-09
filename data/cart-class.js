@@ -2,7 +2,7 @@
 //use PascalCase for things that generate objects = start every word with a capital
 // field == property
 
-class Cart {
+export class Cart {
     cartItems ;
     #localStorageKey ;
 
@@ -98,7 +98,7 @@ class Cart {
 }
 
 
-const cart = new Cart('cart-oop'); // new keyword - creates a new object of the class 
+export const cart = new Cart('cart-oop'); // new keyword - creates a new object of the class 
 const businesscart = new Cart('cart-business') ; //instance of the class
 
 
